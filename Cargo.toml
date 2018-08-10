@@ -1,0 +1,9 @@
+[package]
+authors = ["Emil Fresk <emil.fresk@gmail.com>"]
+categories = ["no-std"]
+description = "Set panicking behavior to halt"
+keywords = ["panic-impl", "panic", "halt"]
+license = "MIT OR Apache-2.0"
+name = "panic-halt"
+repository = "https://github.com/korken89/panic-halt"
+version = "0.1.0"
