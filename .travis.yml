@@ -26,11 +26,6 @@ cache: cargo
 before_cache:
   - chmod -R a+r $HOME/.cargo;
 
-branches:
-  only:
-    - staging
-    - trying
-
 notifications:
   email:
     on_success: never
