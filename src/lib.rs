@@ -21,13 +21,11 @@
 #![no_std]
 
 use core::panic::PanicInfo;
-use core::ptr;
+use core::sync::atomic::{self, Ordering};
 
 #[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
+fn panic(_info: &PanicInfo) -> ! {
     loop {
-        unsafe {
-            ptr::read_volatile(&info);
-        }
+        atomic::compiler_fence(Ordering::SeqCst);
     }
 }
