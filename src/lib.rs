@@ -13,6 +13,11 @@
 //!     panic!("argument is ignored");
 //! }
 //! ```
+//!
+//! # Breakable symbols
+//!
+//! With the panic handler being `#[inline(never)]` the symbol `rust_begin_unwind` will be
+//! available to place a breakpoint on to halt when a panic is happening.
 
 #![deny(missing_docs)]
 #![deny(warnings)]
@@ -23,6 +28,7 @@
 use core::panic::PanicInfo;
 use core::sync::atomic::{self, Ordering};
 
+#[inline(never)]
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     loop {

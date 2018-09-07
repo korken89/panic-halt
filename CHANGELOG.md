@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v0.1.3 - 2018-07-07
+
+Now the panic handler is `#[inline(never)]` to have a symbol to place
+breakpoints on, thanks to @japaric for bringing it to attention.
+
 ## v0.1.2 - 2018-08-29
 
 * Implementation caused code bloat of about 1kB, now fixed
