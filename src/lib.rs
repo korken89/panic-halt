@@ -21,8 +21,6 @@
 
 #![deny(missing_docs)]
 #![deny(warnings)]
-#![feature(core_intrinsics)]
-#![feature(panic_handler)]
 #![no_std]
 
 use core::panic::PanicInfo;
