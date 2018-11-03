@@ -11,6 +11,18 @@ matrix:
     - env: TARGET=thumbv7m-none-eabi
       rust: nightly
 
+    - env: TARGET=thumbv6m-none-eabi
+      rust: beta
+
+    - env: TARGET=thumbv7m-none-eabi
+      rust: beta
+
+    - env: TARGET=thumbv6m-none-eabi
+      rust: stable
+
+    - env: TARGET=thumbv7m-none-eabi
+      rust: stable
+
 before_install: set -e
 
 install:
