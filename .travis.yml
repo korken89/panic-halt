@@ -11,11 +11,17 @@ matrix:
     - env: TARGET=thumbv7m-none-eabi
       rust: nightly
 
+    - env: TARGET=x86_64-unknown-linux-gnu
+      rust: beta
+
     - env: TARGET=thumbv6m-none-eabi
       rust: beta
 
     - env: TARGET=thumbv7m-none-eabi
       rust: beta
+
+    - env: TARGET=x86_64-unknown-linux-gnu
+      rust: stable
 
     - env: TARGET=thumbv6m-none-eabi
       rust: stable
