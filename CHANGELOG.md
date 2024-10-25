@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+
+* Bump MSRV to 1.58.0
+* Removed atomic fences in loop
+* Adapted CI to GH actions
+
 ## v0.2.0 - 2018-09-09
 
 * Removed `#[panic_handler]` as it is no longer needed in latest nightly.
