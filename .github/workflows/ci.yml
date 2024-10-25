@@ -1,0 +1,43 @@
+on:
+    push:
+      branches: [ master ]
+    pull_request:
+    merge_group:
+
+name: Build check
+
+jobs:
+    # We check that the crate builds and links for all the toolchains and targets.
+    build:
+        strategy:
+            matrix:
+                # All generated code should be running on stable now, MRSV is 1.58.0
+                toolchain:
+                - stable
+                - nightly
+                - 1.58.0
+                target:
+                - riscv32imac-unknown-none-elf
+                - riscv64gc-unknown-none-elf
+                - thumbv6m-none-eabi
+                - thumbv7m-none-eabi
+                - thumbv8m.main-none-eabi
+                - x86_64-unknown-linux-gnu
+                include:
+                # Nightly is only for reference and allowed to fail
+                - toolchain: nightly
+                  experimental: true
+            
+        runs-on: ubuntu-latest
+        continue-on-error: ${{ matrix.experimental || false }}
+        steps:
+        - uses: actions/checkout@v4
+        - name: Update Rust toolchain
+          run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+        - name: Install Rust target
+          if: matrix.target != 'x86_64-unknown-linux-gnu'
+          run: rustup target install ${{ matrix.target }}
+        - name: Build (debug)
+          run: cargo build --target ${{ matrix.target }}
+        - name: Build (release)
+          run: cargo build --release --target ${{ matrix.target }}
